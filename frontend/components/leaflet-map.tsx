@@ -265,9 +265,9 @@ export default function LeafletMap({
 			return;
 		}
 
-		// Create Map Instance centered in Jakarta
+		// Create Map Instance centered in Pontianak
 		const map = L.map(mapContainerRef.current, {
-			center: [-6.20, 106.82],
+			center: [-0.055453066586343774, 109.34839801239819],
 			zoom: 12,
 			zoomControl: true
 		});
