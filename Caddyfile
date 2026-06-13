@@ -1,3 +1,19 @@
 {$DOMAIN} {
+	# Backend API paths with no corresponding frontend pages.
+	@api {
+		path /households /households/* /poi /poi/* /land /land/* /gas-station /gas-station/* /health
+	}
+	reverse_proxy @api backend:4000
+
+	# /auth/* -> backend, except GET/HEAD /auth/login which is the frontend login page.
+	@authBackend {
+		path /auth/*
+		not {
+			path /auth/login
+			method GET HEAD
+		}
+	}
+	reverse_proxy @authBackend backend:4000
+
 	reverse_proxy frontend:3000
 }
